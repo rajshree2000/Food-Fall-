@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'LemonMilk';
+  src: url('LemonMilk.woff2') format('woff2'),
+       url('LemonMilk.woff') format('woff'),
+       url('LemonMilk.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+

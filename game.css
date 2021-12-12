@@ -1,0 +1,561 @@
+body {
+    overflow-y: scroll;
+}
+
+canvas {
+    z-index: 0;
+}
+
+h1, h2, h3, button {
+    font-family: 'LemonMilk', "Arial Black", serif;
+}
+
+button {
+    margin-left: 20px;
+    margin-right: 20px;
+    pointer-events: auto;
+}
+
+tr {
+    border-radius: 10px;
+}
+
+input {
+    pointer-events: auto;
+}
+
+#overlay {
+    position: absolute;
+    display: table-cell;
+    background: transparent;
+    top: 0;
+    left: 0;
+    width: 800px;
+    height: 500px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.overlay-title {
+    font-size: 2.5em;
+    padding-top: 5%;
+    color: #fff;
+}
+
+/* Leader-board ------------------------------------------------------------------------------------------------------*/
+
+#leader-board {
+    position: absolute;
+    display: none;
+    width: 50%;
+    height: 95%;
+    margin: auto;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    z-index: 2;
+    vertical-align: middle;
+    color: #fff;
+    top: 15px;
+    left: 200px;
+}
+
+#btn-leader-board-exit {
+    font-family: 'LemonMilk', "Arial Black", serif;
+    font-size: 1em;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+#table-leader-board {
+    width: 60%;
+    margin: 10px auto 10px auto;
+    font-family: 'LemonMilk', "Arial Black", serif;
+    text-align: left;
+}
+
+#table-leader-board tbody {
+    font-family: "Arial Black", sans-serif;
+    text-align: left;
+    font-size: small;
+}
+
+/* Main Menu ---------------------------------------------------------------------------------------------------------*/
+
+.menu-button {
+    margin: 0 auto 0 auto;
+    font-size: 48px;
+    background: none;
+    border: none;
+}
+
+#main-menu i {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    width: 75px;
+    height: 75px;
+    padding: 15px;
+    text-align: center;
+}
+
+.text-box-header {
+    font-size: 25px;
+}
+
+.menu-button:hover {
+    border: none;
+    background: transparent;
+}
+
+.menu-button::selection {
+    border: none;
+    background: transparent;
+}
+
+#game-header {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+#game-banner {
+    width: 70%;
+    margin: auto;
+}
+
+#btn-main-menu-play {
+    position: absolute;
+    display: none;
+    margin: 0 auto 0 auto;
+    font-size: 80px;
+    background: none;
+    border: none;
+    top: 260px;
+    left: 325px;
+}
+
+#btn-main-menu-play i {
+    width: 120px;
+    height: 120px;
+    background: #40d97c;
+    padding: 20px;
+    padding-left: 35px;
+}
+
+#menu-buttons {
+    position: absolute;
+    top: -230px;
+    left: 250px;
+}
+
+#btn-main-menu-leader-board {
+    display: none;
+    border: none;
+}
+
+#btn-main-menu-leader-board i {
+    background: #d92c3f;
+}
+
+#btn-main-menu-volume-on,
+#btn-main-menu-volume-off {
+    display: none;
+    border: none;
+}
+
+#btn-main-menu-volume-on i,
+#btn-main-menu-volume-off i {
+    background: #2c64d9;
+}
+
+#btn-main-menu-share {
+    display: none;
+    border: none;
+}
+
+#btn-main-menu-share i {
+    background: #d9c846;
+}
+
+#instructions {
+    position: absolute;
+    display: none;
+    top: 12em;
+    left: 2em;
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 15em;
+    height: auto;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#instructions li {
+    padding: 5px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: medium;
+}
+
+#instructions hr {
+    width: 80%;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+#instructions-brown {
+    color: #795548;
+}
+
+#instructions-green {
+    color: #12ff19;
+}
+
+#instructions-red {
+    color: #ff0005;
+}
+
+#instructions-yellow {
+    color: #ffd226;
+}
+
+#random-fact {
+    position: absolute;
+    display: inline-block;
+    top: 12em;
+    right: 2em;
+    background-color: rgba(0, 0, 0, 0.50);
+    width: 15em;
+    height: auto;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#random-fact p {
+    padding: 5px;
+    font-family: 'Varela Round', sans-serif;
+    font-size: medium;
+}
+
+#random-fact hr {
+    width: 80%;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+/* Game Login --------------------------------------------------------------------------------------------------------*/
+
+#welcomeUserInfo {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.50);
+    height: auto;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 10px 0 10px;
+    margin-top: 5px;
+}
+
+.inline-font {
+    font-family: 'LemonMilk', "Arial Black", serif;
+}
+
+.login-menu {
+    position: absolute;
+    margin: auto;
+    top: 10%;
+    left: 12%;
+    width: 600px;
+    height: 400px;
+    display: inline-block;
+    padding: 0;
+    -webkit-user-select: auto;
+}
+
+#login-panel {
+    height: 100%;
+}
+
+#loginbox {
+    position: relative;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: #fff;
+    pointer-events: auto;
+}
+
+#game-login button {
+    width: 50%;
+    margin: 0;
+}
+
+#loginbox-panel-heading {
+    color: #fff;
+    background-color: transparent;
+}
+
+#loginform {
+    font-family: 'Varela Round', sans-serif;
+}
+
+#log-out-main-menu {
+    position: absolute;
+    display: none;
+    top: 7px;
+    left: 320px;
+}
+
+#log-out-main-menu button {
+    font-size: 20px;
+    box-shadow: 3px 5px 10px rgba(0, 0, 0, 0.5);
+    background-color: #9c76d5;
+    border: none;
+}
+
+#login-buttons {
+    height: auto;
+    padding-top: 0;
+}
+
+#login-buttons button {
+    margin: 0 5px 0 5px;
+}
+
+#btn-glogin {
+    background-color: #ac2925;
+    border: none;
+    padding: 7px;
+}
+
+#login-alert {
+    height: 30px;
+    padding: 0;
+}
+
+#login-alert p {
+    padding-top: 5px;
+}
+
+#loginRegisterForm {
+    height: 300px;
+}
+
+/* Game Signup --------------------------------------------------------------------------------------------------------*/
+
+#signupalert {
+    height: 30px;
+    padding: 0;
+}
+
+#signupalert p {
+    padding-top: 5px;
+}
+
+#signupbox {
+    pointer-events: auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    top: 0;
+    left: 0;
+}
+
+#signupbox a {
+    color: #fff;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#signupbox button {
+}
+
+#signupbox button:hover {
+
+}
+
+#signupbox .panel-info {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: #fff;
+    font-family: 'Varela Round', sans-serif;
+}
+
+#signupbox-panel-heading {
+    color: #fff;
+    background-color: transparent;
+}
+
+#switch-login-signup {
+    position: absolute;
+    top: 90%;
+    left: 3%;
+    margin: 10px auto 10px auto;
+}
+
+#signupform .form-group {
+    width: 500px;
+    margin: auto;
+    padding-bottom: 20px;
+}
+
+/* Overlay Mobile ----------------------------------------------------------------------------------------------------*/
+
+@media only screen and (max-width: 320px) {
+    .overlay-title {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .overlay-title {
+        font-size: 2.5em;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .overlay-title {
+        font-size: 3em;
+    }
+}
+
+/* Misc --------------------------------------------------------------------------------------------------------------*/
+
+.bottom-align-text {
+    position: relative;
+    top: 400px;
+    text-align: center;
+}
+
+#loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 4;
+}
+
+/* Center the loader */
+#loader-spinner {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    margin: 140px auto 0 auto;
+
+    -webkit-animation: ld-heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation: ld-heartbeat 1.5s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+    z-index: 5;
+}
+
+@-moz-keyframes ld-heartbeat {
+    0% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    5% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25)
+    }
+    39% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9)
+    }
+    45% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15)
+    }
+    600% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@-webkit-keyframes ld-heartbeat {
+    0% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    5% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25)
+    }
+    39% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9)
+    }
+    45% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15)
+    }
+    600% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@-o-keyframes ld-heartbeat {
+    0% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    5% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25)
+    }
+    39% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9)
+    }
+    45% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15)
+    }
+    600% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}
+
+@keyframes ld-heartbeat {
+    0% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    5% {
+        -webkit-transform: scale(1.25);
+        transform: scale(1.25)
+    }
+    39% {
+        -webkit-transform: scale(0.9);
+        transform: scale(0.9)
+    }
+    45% {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15)
+    }
+    600% {
+        -webkit-transform: scale(1.05);
+        transform: scale(1.05)
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1)
+    }
+}

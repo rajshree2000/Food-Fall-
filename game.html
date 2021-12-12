@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,
+    user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta property="og:url" content="http://foodfall.ca/" />
+    <meta property="og:title" content="Meal Drop | JS Game" />
+    <meta property="og:description"
+        content="A JavaScript game written at BCIT to promote issue of food-waste in Vancouver." />
+    <meta property="og:image" content="http://foodfall.ca/assets/img/web/artwork.jpg" />
+    <meta property="fb:app_id" content="452294205121403" />
+
+    <title>Meal Drop </title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/font/font.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/game.css">
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="lib/pixi.js"></script>
+    <script src="lib/font.js"></script>
+    <script src="lib/tink.js"></script>
+    <script src="bower_components/howler.js/dist/howler.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+
+
+</head>
+
+<body>
+
+    <!-- Facebook Sharing -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appID: '452294205121403',
+                autoLogAppEvents: true,
+                status: true,
+                xfbml: true,
+                version: 'v2.9'
+            });
+            FB.AppEvents.logPageView();
+        };
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=452294205121403";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <main class="content">
+        <div class="container-fluid text-center outer" id="game-window">
+            <div id="overlay">
+                <div class="container text-center" id="loader">
+                    <div id="loader-spinner">
+                        <img src="assets/img/web/site-logo-black-long-vector.svg" alt="Meal Drop Loader" />
+                    </div>
+                </div>
+                <!-- Start of Login/Signup -------------------------------------------------------------------------------------------->
+
+                <div class="container login-menu">
+
+                    <!-- LOGIN -->
+                    <div id="login-panel" class="mainbox">
+                        <div class="panel panel-info" id="loginbox">
+                            <div class="panel-heading" id="loginbox-panel-heading">
+                                <div class="panel-title">
+                                    <h2 class="text-box-header">Sign In</h2>
+                                </div>
+                            </div>
+
+
+                            <div id="loginRegisterForm" style="padding-top:30px" class="panel-body">
+
+                                <!-- For displaying errors in the login -->
+                                <div style="color: red; display: none;" id="login-alert"
+                                    class="alert alert-danger col-sm-12">
+                                    <p>Error!</p>
+                                </div>
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                    <input id="txtEmail" type="email" class="form-control txtEmailSignIn"
+                                        name="username" value="" placeholder="Email">
+                                </div>
+
+                                <div style="margin-bottom: 25px" class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                    <input id="txtPassword" type="password" class="form-control txtPasswordSignIn"
+                                        name="password" placeholder="Password">
+                                </div>
+
+                                <div>
+                                    <!-- Button -->
+                                    <div class="btn-group" id="login-buttons">
+                                        <hr style="width: 100%; padding-bottom: 5px;" />
+                                        <button id="btnLogin" href="#" class="btn btn-success">Login</button>
+                                        <button id="btnLogOut" class="btn btn-warning hide">Logout</button>
+                                    </div>
+                                </div>
+
+                                <div id="switch-login-signup" class="control" style="pointer-events: none;">
+                                    <div style="font-size:100%">
+                                        Don't have an account?
+                                        <a id="goToSignUp" style="pointer-events: auto;" href="#"
+                                            onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            Sign Up Here
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- SIGNUP -->
+                    <div id="signupbox" style="display:none;" class="mainbox">
+                        <div class="panel panel-info">
+                            <div id="signupbox-panel-heading" class="panel-heading">
+                                <div class="panel-title">
+                                    <h2 class="text-box-header">Sign Up</h2>
+                                </div>
+                                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a
+                                        id="signinlink" href="#"
+                                        onclick="$('#signupbox').hide(); $('#loginbox').show()">&lt;
+                                        Sign
+                                        In</a></div>
+                            </div>
+                            <div class="panel-body">
+                                <form id="signupform" class="form-horizontal" role="form">
+
+                                    <div id="signupalert" style="color: red; display: none" class="alert alert-danger">
+                                        <p>Error:</p>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtEmailSignUp" class="control-label">User Name</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="txtUserName"
+                                                placeholder="User Name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtEmailSignUp" class="control-label">Email</label>
+                                        <div>
+                                            <input type="text" class="form-control" id="txtEmailSignUp"
+                                                placeholder="Email Address">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="txtPasswordSignUp" class="control-label">Password</label>
+                                        <div>
+                                            <input type="password" class="form-control" id="txtPasswordSignUp"
+                                                placeholder="Password">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <!-- Button -->
+                                        <div>
+                                            <button id="btnSignUp" type="button" class="btn btn-info"><i
+                                                    class="icon-hand-right"></i> &nbsp Sign Up
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <!-- End of Login/Signup ---------------------------------------------------------------------------------------------->
+
+                <div id="game-header">
+                    <img id="game-banner" src="assets/img/web/site-logo-white-long.svg" alt="Food-fall-logo" />
+                </div>
+                <div id="leader-board">
+                    <h2 class="overlay-title">Leader Board</h2>
+                    <table class="table table-bordered" id="table-leader-board">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Username</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <!-- Leaderboard fills here -->
+                        <tbody id="table-body">
+                        </tbody>
+                    </table>
+                    <button class="btn btn-success" id="btn-leader-board-exit">EXIT</button>
+                </div>
+                <div id="main-menu">
+                    <button class="btn btn-info bottom-align-text" id="btn-main-menu-play"><i class="fa fa-play"></i>
+                    </button>
+                    <div class="btn-group" id="menu-buttons">
+                        <button class="btn btn-info bottom-align-text menu-button" id="btn-main-menu-volume-on"><i
+                                class="fa fa-volume-up"></i></button>
+                        <button class="btn btn-info bottom-align-text menu-button" id="btn-main-menu-volume-off"><i
+                                class="fa fa-volume-off"></i></button>
+                        <button class="btn btn-info bottom-align-text menu-button" id="btn-main-menu-leader-board"><i
+                                class="fa fa-trophy"></i></button>
+                        <button class="btn btn-info bottom-align-text menu-button" id="btn-main-menu-share"><i
+                                class="fa fa-share"></i></button>
+                    </div>
+                    <div id="log-out-main-menu">
+                        <button class="btn btn-info bottom-align-text" id="btnLogOutMainMenu">Log Out</button>
+                    </div>
+                    <div class="text-box text-centered" id="instructions">
+                        <h2 class="text-box-header">Instructions</h2>
+                        <hr />
+                        <ul class="list-unstyled">
+                            <li>Use mouse/touch to drag your <span id="instructions-brown"
+                                    style="font-family: 'LemonMilk', sans-serif;">basket</span>
+                                around.
+                            </li>
+                            <li>Catching food for <span id="instructions-green"
+                                    style="font-family: 'LemonMilk', sans-serif;">points</span>. Don't
+                                let it go to <span id="instructions-red"
+                                    style="font-family: 'LemonMilk', sans-serif;">waste</span>!
+                            </li>
+                            <li>Avoid the <span id="instructions-yellow"
+                                    style="font-family: 'LemonMilk', sans-serif;">obstacles</span>.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="text-box text-centered" id="random-fact">
+                    </div>
+                    <div class="col-lg-12 text-center">
+                        <div class="text-box" id="welcomeUserInfo">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/scaleToWindow.js"></script>
+
+    <script src="game/main.js"></script>
+
+</body>
+
+</html>

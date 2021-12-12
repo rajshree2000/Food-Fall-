@@ -1,0 +1,154 @@
+{
+    "frames": {
+        "portal_0000_Layer-70.png": {
+            "frame": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-71.png": {
+            "frame": {
+                "x": 135,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-72.png": {
+            "frame": {
+                "x": 270,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-73.png": {
+            "frame": {
+                "x": 0,
+                "y": 180,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-74.png": {
+            "frame": {
+                "x": 135,
+                "y": 180,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-75.png": {
+            "frame": {
+                "x": 270,
+                "y": 180,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        },
+        "portal_0000_Layer-76.png": {
+            "frame": {
+                "x": 0,
+                "y": 360,
+                "w": 135,
+                "h": 180
+            },
+            "rotated": false,
+            "trimmed": false,
+            "spriteSourceSize": {
+                "x": 0,
+                "y": 0,
+                "w": 135,
+                "h": 180
+            },
+            "sourceSize": {
+                "w": 135,
+                "h": 180
+            }
+        }
+    },
+    "meta": {
+        "app": "https://github.com/juliandescottes/piskel/",
+        "version": "1.0",
+        "image": "portal.png",
+        "format": "RGBA8888",
+        "size": {
+            "w": 405,
+            "h": 540
+        }
+    }
+}

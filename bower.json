@@ -1,0 +1,31 @@
+{
+  "name": "Meal Drop",
+  "homepage": "https://github.com/",
+  "authors": [
+    "Rajshree Khushi"
+  ],
+  "description": "A JavaScript game based around saving food - not wasting it!",
+  "main": "index.html",
+  "keywords": [
+    "JavaScript",
+    "Game",
+    "Phaser"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "grunt": "^1.0.1",
+    "jquery": "^3.2.1",
+    "howler.js": "howler#^2.0.3",
+    "aos": "^2.1.1",
+    "plyr": "^2.0.12"
+  }
+}
